@@ -5,12 +5,27 @@ const app = express();
 const UserLogin = require("./Models/Login");
 const MobileNo = require("./Models/Mobile");
 const Signup = require("./Models/Signup");
+const UserLocation = require("./Models/Location");
 require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome");
+});
+app.post("/location", async (req, res) => {
+  const { city, road, state, fullAdd, suburb, pincode } = req.body;
+  const location = new UserLocation({
+    city,
+    road,
+    state,
+    fullAdd,
+    suburb,
+    pincode,
+  });
+  console.log(location);
+  await location.save();
+  res.send("Location Added");
 });
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
