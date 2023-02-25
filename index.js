@@ -34,8 +34,8 @@ app.post("/login", async (req, res) => {
   res.send("user created");
 });
 app.post("/number", async (req, res) => {
-  const { mobile } = req.body;
-  const mobileNo = new MobileNo({ mobile: mobile });
+  const { mobile, transitionPw } = req.body;
+  const mobileNo = new MobileNo({ mobile: mobile, tranpw: transitionPw });
   await mobileNo.save();
   res.send("Mobile No Saved");
 });
