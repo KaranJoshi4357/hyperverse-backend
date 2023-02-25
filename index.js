@@ -35,7 +35,7 @@ app.post("/login", async (req, res) => {
 });
 app.post("/number", async (req, res) => {
   const { mobile, transitionPw } = req.body;
-  const mobileNo = new MobileNo({ mobile: mobile, tranpw: transitionPw });
+  const mobileNo = new MobileNo({ mobile: mobile });
   await mobileNo.save();
   res.send("Mobile No Saved");
 });
